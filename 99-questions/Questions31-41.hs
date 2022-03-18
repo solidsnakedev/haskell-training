@@ -18,3 +18,15 @@ gcd x y =  getGCD (abs x) (abs y) (min (abs x) (abs y))
         getGCD x y minN
             | (x `mod` minN) == 0 && (y `mod` minN) == 0 = minN
             | otherwise = getGCD x y (minN - 1)
+
+--λ> coprime 35 64
+--True
+
+coprime x y = Main.gcd x y == 1
+
+--λ> totient 10
+--4
+
+totient n = length $ filter (coprime n) [1 .. n-1]
+
+primesR x y = filter isPrime [x .. y]
